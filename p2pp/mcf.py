@@ -871,7 +871,7 @@ def parse_gcode_second_pass():
                 gcode.issue_command(g)
         else:
             gcode.issue_command(g)
-            if g[gcode.EXTRUDE] and v.side_wipe_length == 0:
+            if g[gcode.EXTRUDE] and v.side_wipe_length == 0 and (g[gcode.MOVEMENT] & gcode.INTOWER) == gcode.INTOWER:
                 pings.check_connected_ping()
 
         v.previous_position_x = v.current_position_x
